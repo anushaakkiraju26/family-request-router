@@ -8,19 +8,24 @@
     "ambiguous_clarify": "A request missing information the coordinator needs before acting (which event, which family, which time) and must be answered with a clarifying question rather than a tool call."
   },
   "counts_total": {
-    "fast_path_mutate": 54,
-    "fast_path_reject": 54,
+    "fast_path_mutate": 62,
+    "fast_path_reject": 69,
     "fast_path_read": 54,
-    "ambiguous_clarify": 54,
-    "deep_weekly_workflow": 51,
+    "ambiguous_clarify": 69,
+    "deep_weekly_workflow": 61,
     "outing_workflow": 54
   },
-  "train_count": 256,
-  "val_count": 65,
+  "train_count": 295,
+  "val_count": 74,
   "real_seed_count": 30,
-  "synthetic_count": 291,
+  "synthetic_count": 339,
   "generator_model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
   "sources": {
     "seed_examples": "data/seed_examples.json (originally from github.com/anushaakkiraju26/family-calendar: evaluations/cases.json + evaluations/results_baseline.csv, target_workflow_category)"
+  },
+  "manual_expansion": {
+    "note": "Pass-2 finding (notebooks/finetune_family_request_router.ipynb Recap): prompt-only instructions fixed the outing_workflow/fast_path_read confusion but not the fast_path_reject / ambiguous_clarify / deep_weekly_workflow cluster. Added 48 hand-written contrastive examples for those labels (plus fast_path_mutate reinforcement) and fixed 4 fast_path_reject rows whose disqualifying fact was not actually present in the text (relied on unstated cross-family membership).",
+    "rows_added": 48,
+    "rows_fixed": 4
   }
 }
