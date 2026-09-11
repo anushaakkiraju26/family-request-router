@@ -81,6 +81,20 @@ LABELS: dict[str, str] = {
     ),
 }
 
+# Grounded in the actual fine-tuned-model confusion matrix from the first training
+# pass (notebooks/finetune_family_request_router.ipynb, Section 7) — these are the
+# specific label pairs that pass mixed up, not a generic "everything is confusable"
+# guess. generate_batch() uses this to tell the generator what each label's
+# examples must be clearly distinguished from.
+CONFUSABLE_WITH: dict[str, list[str]] = {
+    "fast_path_reject": ["fast_path_mutate", "ambiguous_clarify", "deep_weekly_workflow"],
+    "fast_path_mutate": ["fast_path_reject"],
+    "ambiguous_clarify": ["fast_path_reject"],
+    "deep_weekly_workflow": ["fast_path_reject"],
+    "outing_workflow": ["fast_path_read"],
+    "fast_path_read": ["outing_workflow"],
+}
+
 CHILD_NAMES = ["Leo", "Maya", "Ava", "Noah", "Priya", "Zoe", "Ben", "Sofia", "Kai", "Ruby"]
 FAMILY_IDS = ["family-1", "family-2", "family-3", "family-4"]
 ACTIVITIES = [
@@ -120,7 +134,14 @@ def extract_json_array(text: str) -> list[str]:
     return json.loads(match.group(0))
 
 
-def generate_batch(client, label: str, description: str, seed_texts: list[str], n: int) -> list[str]:
+def generate_batch(
+    client,
+    label: str,
+    description: str,
+    seed_texts: list[str],
+    n: int,
+    confusable: dict[str, str] | None = None,
+) -> list[str]:
     entity_hint = (
         f"Vary child names across {CHILD_NAMES}, family ids across {FAMILY_IDS}, "
         f"and activities across {ACTIVITIES}. Vary phrasing register: some terse "
@@ -128,12 +149,24 @@ def generate_batch(client, label: str, description: str, seed_texts: list[str], 
         "typos or mid-sentence corrections. Do not repeat any seed example "
         "verbatim."
     )
+    contrast_hint = ""
+    if confusable:
+        contrast_lines = "\n".join(f"- NOT {lbl}: {desc}" for lbl, desc in confusable.items())
+        contrast_hint = (
+            "\n\nA classifier trained on earlier data for this label confused it with "
+            "the routing labels below. Make sure every example is unambiguously NOT one "
+            "of these — lean into whatever detail forces the distinction (an explicit "
+            "past date vs. a future one, one clear instruction vs. missing information, "
+            "a single event vs. a whole week, searching for new activities vs. listing "
+            "existing ones):\n" + contrast_lines + "\n"
+        )
     prompt = (
         "You are generating training data for a text classifier that routes a "
         "parent's request to a family-calendar coordinator agent.\n\n"
         f"Label: {label}\n"
-        f"Definition: {description}\n\n"
-        "Real example requests that belong to this label:\n"
+        f"Definition: {description}"
+        + contrast_hint
+        + "\n\nReal example requests that belong to this label:\n"
         + "\n".join(f"- {t}" for t in seed_texts)
         + f"\n\n{entity_hint}\n\n"
         f"Write {n} NEW, realistic parent request messages that all belong to "
@@ -206,8 +239,11 @@ def main() -> None:
             attempts += 1
             need = args.per_class - len([r for r in all_rows if r["category_truth"] == label])
             batch_n = min(args.batch_size, max(need + 4, 4))  # ask for extra to survive dedup
+            confusable = {c: LABELS[c] for c in CONFUSABLE_WITH.get(label, [])}
             try:
-                candidates = generate_batch(client, label, description, seed_texts, batch_n)
+                candidates = generate_batch(
+                    client, label, description, seed_texts, batch_n, confusable=confusable,
+                )
             except Exception as exc:  # noqa: BLE001
                 print(f"  ! generation error for {label} (attempt {attempts}): {exc}")
                 continue
