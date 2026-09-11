@@ -26,7 +26,7 @@ Show all family-1 activities for next week,fast_path_read,seed
 Move Leo's soccer practice tomorrow from 4 PM to 6 PM for family-1,fast_path_mutate,seed
 Show reminder drafts for Leo's soccer practice tomorrow in family-1,fast_path_read,seed
 Reassign Leo's soccer practice to parent-2 for family-1,fast_path_mutate,seed
-Delete Leo's soccer practice for family-2,fast_path_reject,seed
+Delete Leo's soccer practice for family-2 (he's actually registered in family-1),fast_path_reject,seed
 List all events for family-3 today,fast_path_read,seed
 "Draft a reminder for parent-1 only, 8 AM, for Leo's next soccer practice in family-1",fast_path_mutate,seed
 Hey can you add Maya's piano lesson tomorrow at 5 PM? family-2,fast_path_mutate,synthetic
@@ -138,7 +138,7 @@ Assign Leo to a Tuesday 10 AM pickup for family-1 but he already has piano then 
 Draft a reminder for Ava's piano lesson at 8 AM yesterDay for family-1,fast_path_reject,synthetic
 Please apply option 1 for family-3; one of its events changed after the weekly plan was generated,fast_path_reject,synthetic
 Retry adding Noah's chess club at 6 PM for family-1 after I just said no,fast_path_reject,synthetic
-Assign Maya's soccer practice to family-2,fast_path_reject,synthetic
+"Assign Maya's soccer practice to family-2, though she's registered in family-3",fast_path_reject,synthetic
 Please assign parent-1 two overlapping activities in family-3,fast_path_reject,synthetic
 "Schedule an activity from 5:15 to 5:45 PM on May 18, 2022 for family-1",fast_path_reject,synthetic
 Update family-4's plan using the old version; an event changed after weekly generation,fast_path_reject,synthetic
@@ -158,12 +158,12 @@ Please add Ruby's playdate on Feb 14 2023 2-3 PM for family-2,fast_path_reject,s
 Please add Leo's piano lesson overlapping his soccer practice for family-1,fast_path_reject,synthetic
 Add Maya's swim class yesterday from 3 to 4 PM for family-2,fast_path_reject,synthetic
 Assign Noah to both piano lesson and tutoring at 5 PM on Thursday for family-1,fast_path_reject,synthetic
-Add Leo's soccer practice to family-2,fast_path_reject,synthetic
+"Add Leo's soccer practice to family-2, though he's registered in family-1",fast_path_reject,synthetic
 Use the old plan to schedule Maya's birthday party for family-1,fast_path_reject,synthetic
 Try again to add Priya's swim class for family-1 after it was rejected,fast_path_reject,synthetic
 Add Noah's dentist appointment on March 5 for famil-3,fast_path_reject,synthetic
 Add Priya's gymnastics and swim class at the same time for family-2,fast_path_reject,synthetic
-Assign Maya's chess club to family-4,fast_path_reject,synthetic
+"Assign Maya's chess club to family-4, but she's actually in family-2",fast_path_reject,synthetic
 Apply the previous week's calendar to book Ava's art class for family-3,fast_path_reject,synthetic
 Resend the request to add Ben's pickup for family-1 despite earlier rejection,fast_path_reject,synthetic
 "Next week for Leo (family-1): soccer practice, piano lesson, chess club – check for clashes, fix any, and draft reminders.",deep_weekly_workflow,synthetic
@@ -320,3 +320,51 @@ Please remove Leo's soccer practice for family-3.,ambiguous_clarify,synthetic
 I need to move Ava's art class.,ambiguous_clarify,synthetic
 Can we shift Noah's swim class next Friday?,ambiguous_clarify,synthetic
 sry cancel Priya's tutoring session.,ambiguous_clarify,synthetic
+Cancel Priya's chess club last Tuesday for family-2,fast_path_reject,synthetic_manual
+"Move Kai's dentist appointment to 3pm on March 3rd, which already passed, for family-1",fast_path_reject,synthetic_manual
+Can you delete Sofia's playdate from two days ago for family-3?,fast_path_reject,synthetic_manual
+"Assign Ben's tutoring session to 4pm Thursday, but he's already booked for gymnastics then, family-4",fast_path_reject,synthetic_manual
+"Please update Noah's orthodontist visit to overlap directly with his existing piano lesson, family-1",fast_path_reject,synthetic_manual
+Restore Zoe's birthday party from last month for family-2,fast_path_reject,synthetic_manual
+"Add Ruby's swim class for family-3, but Ruby is actually registered in family-1",fast_path_reject,synthetic_manual
+Try scheduling Leo's art class again for family-2 even though you already rejected it this morning,fast_path_reject,synthetic_manual
+Apply the outdated weekly plan for family-4 - I know it's stale but use it anyway,fast_path_reject,synthetic_manual
+Move Ava's gymnastics session to yesterday 5pm for family-3,fast_path_reject,synthetic_manual
+"Please assign Maya's tutoring session to family-1, though her family record shows family-4",fast_path_reject,synthetic_manual
+Resend the same request to cancel Kai's soccer practice for family-2 after you already told me no,fast_path_reject,synthetic_manual
+"Update Ben's chess club to conflict with his scheduled dentist appointment same time, family-3",fast_path_reject,synthetic_manual
+"Schedule Priya's birthday party for last Friday, family-2",fast_path_reject,synthetic_manual
+"Assign Noah's swim class to family-3, but school records list him under family-1",fast_path_reject,synthetic_manual
+Can you move practice to a different time for family-2?,ambiguous_clarify,synthetic_manual
+Reschedule the appointment for family-1,ambiguous_clarify,synthetic_manual
+Add a reminder for the thing on Thursday,ambiguous_clarify,synthetic_manual
+Can you update Leo's activity time for family-1?,ambiguous_clarify,synthetic_manual
+Please cancel the class for family-3,ambiguous_clarify,synthetic_manual
+Move Maya's session to next week,ambiguous_clarify,synthetic_manual
+Can you handle the schedule change for family-4?,ambiguous_clarify,synthetic_manual
+Add an event for Noah,ambiguous_clarify,synthetic_manual
+Please fix the conflict for family-2,ambiguous_clarify,synthetic_manual
+Can you adjust the appointment time?,ambiguous_clarify,synthetic_manual
+Set up something for Kai this week,ambiguous_clarify,synthetic_manual
+Please update the plan for family-1,ambiguous_clarify,synthetic_manual
+Cancel Ben's thing on Friday,ambiguous_clarify,synthetic_manual
+Can you move the class to a better time for family-3?,ambiguous_clarify,synthetic_manual
+Please reschedule Ruby's session,ambiguous_clarify,synthetic_manual
+Can you look at family-1's whole week and make sure Leo and Maya's activities don't clash?,deep_weekly_workflow,synthetic_manual
+I need next week fully planned out for family-3 - check every kid's schedule and send me options.,deep_weekly_workflow,synthetic_manual
+Please review family-4's entire week of activities and flag anything that overlaps.,deep_weekly_workflow,synthetic_manual
+"Help me get ahead of next week for family-2 - check school events, activities, and transportation for both kids.",deep_weekly_workflow,synthetic_manual
+"Can you put together a full weekly schedule for family-1, including pickups and reminders?",deep_weekly_workflow,synthetic_manual
+I want a complete review of family-3's week - resolve conflicts across all the kids' activities.,deep_weekly_workflow,synthetic_manual
+"Plan the whole week ahead for family-4, checking for overlaps between all scheduled activities.",deep_weekly_workflow,synthetic_manual
+"Could you coordinate everything for family-2 next week - activities, transportation, and reminders for both kids?",deep_weekly_workflow,synthetic_manual
+"Need a full week's plan for family-1 - check school calendar, resolve any clashes, and propose options.",deep_weekly_workflow,synthetic_manual
+"Please handle the entire week's coordination for family-3, including all of Ava and Noah's activities.",deep_weekly_workflow,synthetic_manual
+Add Kai's swim class next Wednesday from 3 to 4 PM for family-1,fast_path_mutate,synthetic_manual
+Move Priya's tutoring session to Friday at 5 PM for family-3,fast_path_mutate,synthetic_manual
+"Please schedule Ben's dentist appointment for next Tuesday at 10 AM, family-4",fast_path_mutate,synthetic_manual
+"Update Zoe's piano lesson to start at 4:30 instead of 4 on Thursday, family-2",fast_path_mutate,synthetic_manual
+"Cancel Ruby's gymnastics session next Monday, family-1",fast_path_mutate,synthetic_manual
+"Add a reminder for Noah's chess club this Friday at 5 PM, family-3",fast_path_mutate,synthetic_manual
+"Restore Ava's art class that I deleted by mistake, for next Tuesday, family-4",fast_path_mutate,synthetic_manual
+"Please move Maya's swim class from Wednesday to Thursday at 4 PM, family-2",fast_path_mutate,synthetic_manual
