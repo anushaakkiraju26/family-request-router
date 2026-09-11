@@ -59,9 +59,20 @@ LABELS: dict[str, str] = {
     ),
     "fast_path_reject": (
         "A single, specific request that must be declined outright by "
-        "deterministic safeguards: a past-dated event, a direct child/parent/"
-        "transportation conflict, cross-family access, a stale plan version, "
-        "or an unsafe retry after a prior rejection."
+        "deterministic safeguards: a past-dated event, cross-family access "
+        "(the child/parent named does not belong to the stated family), a "
+        "stale plan version, or an unsafe retry after a prior rejection. Does "
+        "NOT include scheduling conflicts (double-booked times) - those are "
+        "fast_path_conflict."
+    ),
+    "fast_path_conflict": (
+        "A single, specific request that creates a genuine scheduling "
+        "conflict - the same child double-booked into two overlapping "
+        "activities, or the same parent assigned to two overlapping pickups/"
+        "drop-offs - routed to a specialist that can offer alternatives or "
+        "flag a likely parent error, rather than an outright decline. Not a "
+        "past-dated event and not a cross-family issue - those are "
+        "fast_path_reject."
     ),
     "deep_weekly_workflow": (
         "A broad, multi-day coordination request needing the full specialist "
@@ -87,8 +98,9 @@ LABELS: dict[str, str] = {
 # guess. generate_batch() uses this to tell the generator what each label's
 # examples must be clearly distinguished from.
 CONFUSABLE_WITH: dict[str, list[str]] = {
-    "fast_path_reject": ["fast_path_mutate", "ambiguous_clarify", "deep_weekly_workflow"],
-    "fast_path_mutate": ["fast_path_reject"],
+    "fast_path_reject": ["fast_path_mutate", "ambiguous_clarify", "deep_weekly_workflow", "fast_path_conflict"],
+    "fast_path_conflict": ["fast_path_reject", "fast_path_mutate"],
+    "fast_path_mutate": ["fast_path_reject", "fast_path_conflict"],
     "ambiguous_clarify": ["fast_path_reject"],
     "deep_weekly_workflow": ["fast_path_reject"],
     "outing_workflow": ["fast_path_read"],

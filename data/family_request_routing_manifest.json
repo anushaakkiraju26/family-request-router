@@ -9,16 +9,17 @@
   },
   "counts_total": {
     "fast_path_mutate": 62,
-    "fast_path_reject": 69,
+    "fast_path_reject": 53,
     "fast_path_read": 54,
+    "fast_path_conflict": 51,
     "ambiguous_clarify": 69,
     "deep_weekly_workflow": 61,
     "outing_workflow": 54
   },
-  "train_count": 295,
-  "val_count": 74,
+  "train_count": 323,
+  "val_count": 81,
   "real_seed_count": 30,
-  "synthetic_count": 339,
+  "synthetic_count": 374,
   "generator_model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
   "sources": {
     "seed_examples": "data/seed_examples.json (originally from github.com/anushaakkiraju26/family-calendar: evaluations/cases.json + evaluations/results_baseline.csv, target_workflow_category)"
@@ -27,5 +28,10 @@
     "note": "Pass-2 finding (notebooks/finetune_family_request_router.ipynb Recap): prompt-only instructions fixed the outing_workflow/fast_path_read confusion but not the fast_path_reject / ambiguous_clarify / deep_weekly_workflow cluster. Added 48 hand-written contrastive examples for those labels (plus fast_path_mutate reinforcement) and fixed 4 fast_path_reject rows whose disqualifying fact was not actually present in the text (relied on unstated cross-family membership).",
     "rows_added": 48,
     "rows_fixed": 4
+  },
+  "new_label_fast_path_conflict": {
+    "note": "Split out of fast_path_reject: scheduling conflicts (same child/parent double-booked) are a genuinely different downstream action in the Family Coordinator (offer alternatives / flag possible parent error) than an outright deterministic decline, so they now get their own routing label instead of being folded into fast_path_reject.",
+    "rows_relabeled_from_reject": 16,
+    "rows_added": 35
   }
 }
