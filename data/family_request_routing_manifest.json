@@ -1,0 +1,26 @@
+{
+  "labels": {
+    "fast_path_mutate": "A single, specific calendar or reminder mutation the coordinator can execute directly after conflict checks: create, update, move, delete, or restore an event, or draft/cancel a reminder, for one clear family and activity. Pending parent approval before the mutating tool call.",
+    "fast_path_read": "A single, specific read-only request: list or show existing events, reminders, or activities for a family, child, or date range. No mutation, no approval gate.",
+    "fast_path_reject": "A single, specific request that must be declined outright by deterministic safeguards: a past-dated event, a direct child/parent/transportation conflict, cross-family access, a stale plan version, or an unsafe retry after a prior rejection.",
+    "deep_weekly_workflow": "A broad, multi-day coordination request needing the full specialist pipeline (intake, weekly planner, transportation, schedule reviewer, reminder agent) to check school and family calendars, resolve conflicts, and produce a reviewed weekly plan.",
+    "outing_workflow": "A request for cited outing or activity ideas for a weekend or school break, routed to the Family Outing Agent's constrained search wrapper. Never mutates the calendar.",
+    "ambiguous_clarify": "A request missing information the coordinator needs before acting (which event, which family, which time) and must be answered with a clarifying question rather than a tool call."
+  },
+  "counts_total": {
+    "fast_path_mutate": 54,
+    "fast_path_reject": 54,
+    "fast_path_read": 54,
+    "ambiguous_clarify": 54,
+    "deep_weekly_workflow": 51,
+    "outing_workflow": 54
+  },
+  "train_count": 256,
+  "val_count": 65,
+  "real_seed_count": 30,
+  "synthetic_count": 291,
+  "generator_model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "sources": {
+    "seed_examples": "data/seed_examples.json (originally from github.com/anushaakkiraju26/family-calendar: evaluations/cases.json + evaluations/results_baseline.csv, target_workflow_category)"
+  }
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "text": "Add Leo's soccer practice tomorrow from 4 to 5 PM for family-1",
+    "category_truth": "fast_path_mutate"
+  },
+  {
+    "text": "Add Leo's soccer practice yesterday from 4 to 5 PM for family-1",
+    "category_truth": "fast_path_reject"
+  },
+  {
+    "text": "Show Leo's activities today for family-1",
+    "category_truth": "fast_path_read"
+  },
+  {
+    "text": "Add Leo's piano lesson during his existing soccer practice for family-1",
+    "category_truth": "fast_path_reject"
+  },
+  {
+    "text": "Add child-2's music lesson at the same time as Leo's soccer practice for family-1",
+    "category_truth": "fast_path_mutate"
+  },
+  {
+    "text": "Assign two overlapping activities to parent-1 in family-1",
+    "category_truth": "fast_path_reject"
+  },
+  {
+    "text": "Delete Leo's soccer practice today for family-1",
+    "category_truth": "fast_path_mutate"
+  },
+  {
+    "text": "Restore Leo's deleted soccer practice for today in family-1",
+    "category_truth": "fast_path_mutate"
+  },
+  {
+    "text": "Draft a day-of reminder at 8 AM for both parents for Leo's next practice in family-1",
+    "category_truth": "fast_path_mutate"
+  },
+  {
+    "text": "Draft an 8 AM reminder for an event today after 8 AM has passed in family-1",
+    "category_truth": "fast_path_reject"
+  },
+  {
+    "text": "Delete soccer practice for family-1",
+    "category_truth": "ambiguous_clarify"
+  },
+  {
+    "text": "Move Leo's practice to 6 PM for family-1",
+    "category_truth": "fast_path_mutate"
+  },
+  {
+    "text": "Show all activities in family-2",
+    "category_truth": "fast_path_read"
+  },
+  {
+    "text": "Show today's activities for family-1",
+    "category_truth": "fast_path_read"
+  },
+  {
+    "text": "Coordinate next week for family-1, identify conflicts, propose parent assignments, and draft day-of reminders.",
+    "category_truth": "deep_weekly_workflow"
+  },
+  {
+    "text": "Schedule an activity from 5:15 to 5:45 PM on May 18, 2027 for family-1.",
+    "category_truth": "fast_path_reject"
+  },
+  {
+    "text": "Plan transportation for family-1 on the last day of school, May 27, 2027.",
+    "category_truth": "deep_weekly_workflow"
+  },
+  {
+    "text": "Coordinate next week for family-1. Check school events, resolve activity and transportation conflicts, generate three schedule options for parent-1, parent-2, and vikram, recommend the best plan, and draft reminders. Do not apply changes until I approve.",
+    "category_truth": "deep_weekly_workflow"
+  },
+  {
+    "text": "Assign Vikram to a Tuesday 10 AM pickup for family-1.",
+    "category_truth": "fast_path_reject"
+  },
+  {
+    "text": "Apply option 1 for family-1. One of its events changed after the weekly plan was generated.",
+    "category_truth": "fast_path_reject"
+  },
+  {
+    "text": "Find three science or outdoor activities near San Jose for family-1 this weekend. Check our calendar first and stay within a 45-minute drive. Do not add anything to the calendar.",
+    "category_truth": "outing_workflow"
+  },
+  {
+    "text": "Show tomorrow's activities for family-1",
+    "category_truth": "fast_path_read"
+  },
+  {
+    "text": "Add Leo's dentist appointment tomorrow from 2 to 3 PM at Willow Clinic for family-1",
+    "category_truth": "fast_path_mutate"
+  },
+  {
+    "text": "Show all family-1 activities for next week",
+    "category_truth": "fast_path_read"
+  },
+  {
+    "text": "Move Leo's soccer practice tomorrow from 4 PM to 6 PM for family-1",
+    "category_truth": "fast_path_mutate"
+  },
+  {
+    "text": "Show reminder drafts for Leo's soccer practice tomorrow in family-1",
+    "category_truth": "fast_path_read"
+  },
+  {
+    "text": "Reassign Leo's soccer practice to parent-2 for family-1",
+    "category_truth": "fast_path_mutate"
+  },
+  {
+    "text": "Delete Leo's soccer practice for family-2",
+    "category_truth": "fast_path_reject"
+  },
+  {
+    "text": "List all events for family-3 today",
+    "category_truth": "fast_path_read"
+  },
+  {
+    "text": "Draft a reminder for parent-1 only, 8 AM, for Leo's next soccer practice in family-1",
+    "category_truth": "fast_path_mutate"
+  }
+]
