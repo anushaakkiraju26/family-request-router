@@ -66,6 +66,7 @@ dataset with the same short-utterance, 7-label shape as the family router.
 | File | What it is |
 |---|---|
 | `notebooks/snips-intent-router/finetune_snips_intent_router.ipynb` | Same recipe as the family-router notebook, applied to `data/snips-intent-router/snips_intent_routing.csv`. |
+| `notebooks/snips-intent-router/finetune_snips_intent_router_executed.ipynb` | The same notebook as actually run, outputs included — evidence of the 96.7%-vs-79.1% result below. |
 | `tools/snips-intent-router/prepare_snips_dataset.py` | Downloads the [`benayas/snips`](https://huggingface.co/datasets/benayas/snips) mirror and subsamples it to roughly match `family_request_routing.csv`'s per-label row count. |
 | `data/snips-intent-router/snips_intent_routing.csv` / `_train.csv` / `_val.csv` / `_manifest.json` | Same file shapes as the family-request dataset. |
 
