@@ -16,10 +16,10 @@ SNIPS NLU benchmark (sonos/nlu-benchmark), already deduplicated into a flat
 balanced across the 7 intents).
 
 This script downloads that data (via the HF `parquet` API, no `datasets`
-library dependency), subsamples it down to a size comparable to
-data/family_request_routing.csv (so the two recipes are trained on similar
-data volume, not just similar label-set size), and writes it out in the
-same file shapes as the family-request dataset:
+library dependency), subsamples it down to a size comparable to the root
+project's data/family_request_routing.csv (so the two recipes are trained on
+similar data volume, not just similar label-set size), and writes it out
+alongside this script in the same file shapes as that dataset:
 
   data/snips_intent_routing.csv       (text, category_truth, source) — all rows
   data/snips_intent_routing_train.csv (80%, stratified)
@@ -28,9 +28,9 @@ same file shapes as the family-request dataset:
 
 Needs `pyarrow` and `requests` (see requirements.txt).
 
-Run:
+Run (from the repo root):
 
-  python tools/prepare_snips_dataset.py --per-class 65
+  python trials/snips-intent-router/prepare_snips_dataset.py --per-class 65
 """
 
 from __future__ import annotations
@@ -44,8 +44,9 @@ import pandas as pd
 import requests
 from sklearn.model_selection import train_test_split
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-DATA_DIR = REPO_ROOT / "data"
+# Data lives alongside this script (trials/snips-intent-router/data/), not in
+# the repo root's data/ — this trial is kept self-contained in its own folder.
+DATA_DIR = Path(__file__).resolve().parent / "data"
 
 HF_DATASET = "benayas/snips"
 HF_PARQUET_API = f"https://huggingface.co/api/datasets/{HF_DATASET}/parquet"
