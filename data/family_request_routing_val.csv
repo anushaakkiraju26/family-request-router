@@ -1,82 +1,91 @@
 text,category_truth
-"family-2, Maya: need to coordinate next week, she has birthday party Mon, gymnastics Wed, chess club Fri – find any clashes, propose assignments.",deep_weekly_workflow
-Delete Leo's soccer practice today for family-1,fast_path_mutate
-Add Leo's dentist appointment tomorrow from 2 to 3 PM at Willow Clinic for family-1,fast_path_mutate
+Apply option 1 for family-1. One of its events changed after the weekly plan was generated.,fast_path_reject
+Resend the same request to cancel Kai's soccer practice for family-2 after you already told me no,fast_path_reject
+Can u delete piano lesson for Maya tomorrow?,ambiguous_clarify
+Assign Leo's school pickup to family-1 at 3 PM tomorrow,fast_path_mutate
+"Schedule Zoe's playdate during her piano lesson, family-1",fast_path_conflict
+"Add Kai's chess club at 4pm Tuesday for family-1, but he already has tutoring session then",fast_path_conflict
+Delete Maya's art class tomorrow,ambiguous_clarify
 "Assign Noah's gymnastics and school pickup to the same time slot, family-2",fast_path_conflict
-"Suggest 1 swim class near San Jose for Maya family-3 this Saturday, verify calendar slots, keep drive ≤45 min, no adds.",outing_workflow
-Retry scheduling Kai's chess club at 5-6 PM on March 20 2023 for family-4 after it got rejected earlier,fast_path_reject
-Show Ruby's orthodontist visit next week family-3,fast_path_read
-Resend the request to add Ben's pickup for family-1 despite earlier rejection,fast_path_reject
-"Move Leo's art class to overlap with his soccer practice on Tuesday, family-4",fast_path_conflict
-"Can you create schedule for family-4? Sofia's swim class Mon, tutoring session Wed, school pickup Thu, resolve clashes, give options and reminders.",deep_weekly_workflow
-"Next week for Leo (family-1): soccer practice, piano lesson, chess club – check for clashes, fix any, and draft reminders.",deep_weekly_workflow
-Delete Noah's swim class today famly-3,fast_path_mutate
-"Please suggest two chess‑club meetups for Leo this Saturday near family-2, keep drive under 45 min, and skip adding to calendar.",outing_workflow
-Remvoe Ben's chess club for family-1,ambiguous_clarify
-Cancel Zoe's piano lesson tomorrow afternoon family-1,fast_path_mutate
-"Need a weekly plan for family-4. Ruby's soccer practice Fri, gymnastics Thu, ensure no overlap with birthday party, draft reminders.",deep_weekly_workflow
-Schedule Priya's tutoring session on May 1 2022 at 2 PM for family-1,fast_path_reject
-Add Maya's swim class yesterday from 3 to 4 PM for family-2,fast_path_reject
-"Find an orthodontist visit for Leo family-2 this weekend, verify my calender, stay within 45‑minute drive, no edits.",outing_workflow
-Cancel Kai's gymnastics,ambiguous_clarify
-Add Leo's birthday party yesterday at 2pm for family-2,fast_path_reject
-Give me Noah's dentist appointment for family-1 tomorrow,fast_path_read
-Cancel Leo's soccer practice for family-1,ambiguous_clarify
-"Add Ruby's swim class for family-3, but Ruby is actually registered in family-1",fast_path_reject
-"Find a piano lesson for Leo in family-2 this Sunday, check schedule first, stay within 45‑minute drive, dont modify calendar.",outing_workflow
-Move Noah's gymnastics from 3 to 5pm family-1,fast_path_mutate
-"Suggest two tutoring sessions for Kai (family-2) this weekend, drive <=45 min, check calender first, no updates.",outing_workflow
-"Can you fix conflicts next week for family-2? Maya has tutoring session Mon, swim class Wed, birthday party Fri – produce three schedule options and draft reminders.",deep_weekly_workflow
-Show tomorrow's activities for Noah in family-2,fast_path_read
+"Ava (family-4) want two nearby options under 45 min drive — birthday party or playdate — check the calendar first, no additions please.",outing_workflow
+Try again to add Ben's chess club at 5 PM for family-3 after it was already rejected,fast_path_reject
+Show Maya piano lesson tomorrow family-3,fast_path_read
 "Add Leo's soccer practice to family-2, though he's registered in family-1",fast_path_reject
-"Hey can you list three cool activities nea family-1 for my kid Zoe this weekend, drive ≤45 min, and please don’t update the calendar.",outing_workflow
-"Find a dentist appointment for Zoe family-3 this Sunday, check my calendar first, stay within 45‑minute drive, dont add.",outing_workflow
-Add Leo's soccer practice tomorrow 4-5 PM for family-1,fast_path_mutate
-Delet Maya's piano lesson,ambiguous_clarify
-"Update Zoe's piano lesson to start at 4:30 instead of 4 on Thursday, family-2",fast_path_mutate
-"Update Priya's tutoring session to overlap with her birthday party on Saturday, family-2",fast_path_conflict
-Would you mind removing Zoe's art class family-3,ambiguous_clarify
-"Zoe's orthodontist visit and swim class overlapping, can you resolve and draft reminders, family-4.",deep_weekly_workflow
-Help me sort next week for family-2 – Ben’s piano lesson and soccer practice; suggest three parent assignments.,deep_weekly_workflow
-Take out Zoe's tutoring session for family-3,ambiguous_clarify
-Move Ava's swim class to 4pm for family-3 pls,fast_path_mutate
-"Suggest a school pickup activity for Maya family-1 this Sunday, check my calender first, limit drive to 45 min, no additions.",outing_workflow
-List all events for family-3 today,fast_path_read
-Could you please add Maya's piano lesson tomorrow at 3 PM for family-2,fast_path_mutate
-List all birthday party events for family-2,fast_path_read
-Please apply option 1 for family-3; one of its events changed after the weekly plan was generated,fast_path_reject
-"Find art class options for Ava this weekend — please check our calendar first, stay within a 45‑minute drive, and do not add to the calendar.",outing_workflow
-Show Maya's piano lesson tomorrow in family-2,fast_path_read
-Draft a reminder at 8 AM for parent-1 only for Noah's dentist appointment tomorrow,fast_path_mutate
-"Assign both parent-1 and parent-2 to drive Leo at the exact same time, family-1",fast_path_conflict
-Assign two overlapping activities to parent-4 in family-4,fast_path_conflict
-"Can you find a orthodontist visit idea for Sofia this Saturday? Check calendar, stay within 45‑min drive, do NOT add to calendar.",outing_workflow
-"Ava's gymnastics Monday and piano lesson Tuesday — find a slot that works, family-1 please.",deep_weekly_workflow
-Move Maya's session to next week,ambiguous_clarify
-"Could you suggest a soccer practice slot for Maya this Saturday? Verify calendar, stay within 45‑minute drive, and do not add to calendar.",outing_workflow
-"Add Ruby's tutoring session at 4pm, but her art class is already booked then, family-3",fast_path_conflict
-Could you please schedule Maya's piano lesson overlapping her soccer practice on Tuesday at 5 PM for family-2,fast_path_conflict
-Assign Ben's orthodontist visit on Jul 10 2023 3-4 PM for family-3,fast_path_reject
-Assign Noah to both piano lesson and tutoring at 5 PM on Thursday for family-1,fast_path_conflict
-"Need a full week's plan for family-1 - check school calendar, resolve any clashes, and propose options.",deep_weekly_workflow
-Show all family-3 activities for next week,fast_path_read
-Can you move practice to a different time for family-2?,ambiguous_clarify
-Cancel Ben's thing on Friday,ambiguous_clarify
-Update Priya's tutoring session to Friday 3-4 PM for family-2,fast_path_mutate
+Add Priya's gymnastics and swim class at the same time for family-2,fast_path_conflict
+Apply the previous week's calendar to book Ava's art class for family-3,fast_path_reject
+Delete swim class on Friday family-4,ambiguous_clarify
+"Schedule Sofia's birthday party over her existing tutoring session, family-1",fast_path_conflict
+Show all family-1 activities for next week,fast_path_read
+Show Ben's tutoring session tomorrow family-1,fast_path_read
+Move Maya's swim class to 5 PM Thursday for family-2,fast_path_mutate
+"Can you give me suggestions for Noah (family-1) this Saturday? Think soccer practice or chess club, but only if they fit the calendar. Please don’t modify it.",outing_workflow
+Retry scheduling Kai's chess club at 5-6 PM on March 20 2023 for family-4 after it got rejected earlier,fast_path_reject
+"I need a weekly plan for family-3 – Noah’s art class and chess club, please resolve any clashes.",deep_weekly_workflow
+sry cancel Priya's tutoring session.,ambiguous_clarify
+Restore Noah's orthodontist visit tomorrow morning for family-4,fast_path_mutate
+Assign school pickup for Leo,ambiguous_clarify
 Show tomorrow's activities for family-1,fast_path_read
+"Could you handle scheduling for family-3, Sofia’s swim class and playdate, and fix any pickup conflicts?",deep_weekly_workflow
+"Coordinate next week for family-1. Check school events, resolve activity and transportation conflicts, generate three schedule options for parent-1, parent-2, and vikram, recommend the best plan, and draft reminders. Do not apply changes until I approve.",deep_weekly_workflow
+"Need help with Priya's birthday party on Thursday, family-4 — transport and reminders?",deep_weekly_workflow
+Can you delete Maya's piano lesson tomorrow?,ambiguous_clarify
+Add Zoe's chess club tomorrow 6-7pm family-4,fast_path_mutate
+Can you cancel Maya's piano lesson tomorrow?,ambiguous_clarify
 list Maya's swim class today for family-2,fast_path_read
-Show all family-4 activities next week,fast_path_read
-"Ben's tutoring session and orthodontist visit next week, resolve transport issues and send reminders.",deep_weekly_workflow
-Can you delete Ava's chess club?,ambiguous_clarify
-Draft an 8 AM reminder for an event today after 8 AM has passed in family-1,fast_path_reject
-Restore Leo's orthodontist visit that got canceled today family-4,fast_path_mutate
-Can u cancel Maya’s piano lesson on Friday?,ambiguous_clarify
-"Add Ben's tutoring session Thursday 4pm, overlapping with his art class, family-1",fast_path_conflict
-Add Leo's piano lesson durin his existing soccer practice for family-4,fast_path_conflict
-List all events for family-2 today,fast_path_read
-Delete Leo's birthday party this Saturday,ambiguous_clarify
-Can you adjust the appointment time?,ambiguous_clarify
-"Schedule an activity from 5:15 to 5:45 PM on May 18, 2022 for family-1",fast_path_reject
-"Plan the whole week ahead for family-4, checking for overlaps between all scheduled activities.",deep_weekly_workflow
-Please take out Noah's swim class,ambiguous_clarify
-"family-3, Ava: soccer practice Mon, piano lesson Wed, dentist appointment Fri – check overlaps, fix them, and draft syr?",deep_weekly_workflow
+Move Leo's chess club from 3 to 5pm family-1,fast_path_mutate
+"Hey can you list three cool activities nea family-1 for my kid Zoe this weekend, drive ≤45 min, and please don’t update the calendar.",outing_workflow
+"Add Ruby's tutoring session at 4pm, but her art class is already booked then, family-3",fast_path_conflict
+Take out Zoe's tutoring session for family-3,ambiguous_clarify
+Add Leo's soccer practice yesterday 4-5 PM for family-1,fast_path_reject
+Draft a day-of reminder at 8 AM for both parents for Leo's next practice in family-1,fast_path_mutate
+Cancel Ruby's orthodontist visit from two weeks ago for family-1,fast_path_reject
+Add an event for Noah,ambiguous_clarify
+Delete Ruby's soccer practice today famly-2,fast_path_mutate
+Can u generate three options for family-2 next week (Leo’s soccer practice + birthday party) and send reminders?,deep_weekly_workflow
+"Help me get ahead of next week for family-2 - check school events, activities, and transportation for both kids.",deep_weekly_workflow
+Can you update Leo's activity time for family-1?,ambiguous_clarify
+Can you handle the schedule change for family-4?,ambiguous_clarify
+Cancel Zoe's piano lesson tomorrow afternoon family-1,fast_path_mutate
+Reschedule Priya's tutoring session to last Monday for family-1,fast_path_reject
+Delete dentist appt for Noah on Friday?,ambiguous_clarify
+"Assign Maya's chess club and dentist appointment to the same hour, family-3",fast_path_conflict
+Cancel chess club for family-1 Monday?,ambiguous_clarify
+"Family-2: Plan transportation for Leo's dentist appointment on May 27 2027, update calendar please.",deep_weekly_workflow
+Hey can you add Maya's piano lesson tomorrow at 5 PM? family-2,fast_path_mutate
+"Please move Ava's playdate to overlap with her dentist appointment, family-3",fast_path_conflict
+"Suggest 1 swim class near San Jose for Maya family-3 this Saturday, verify calendar slots, keep drive ≤45 min, no adds.",outing_workflow
+"Can you list a gymnastics sesson for Noah family-4 on Friday break, check my calendar first, keep travel ≤45 min, no additions.",outing_workflow
+"family-3, Ava: need to coordinate next week, she has swim class Tue and dentist appointment Thu, plus a playdate Fri. Resolve timing issues and give me a schedule.",deep_weekly_workflow
+Remind me of Zoe's swim class tomorrow family-2,fast_path_read
+Add child-2's music lesson at the same time as Leo's soccer practice for family-1,fast_path_mutate
+Show Leo's soccer practice tomorrow in family-1,fast_path_read
+Please try scheduling Ava's playdate again for family-3 even though I already said no,fast_path_reject
+"Add a reminder for Noah's chess club this Friday at 5 PM, family-3",fast_path_mutate
+"Suggest a gymnastics class for Priya next weekend. Check calendar first, 45‑min drive max, and don’t add anything.",outing_workflow
+Delete Ava's dentist appt today for family-3,fast_path_mutate
+Remove art class for Zoe on Thursday,ambiguous_clarify
+"Need a schedule for family-1 next week: Zoe’s art class and orthodontist visit, resolve any conflicts and draft remnders.",deep_weekly_workflow
+Please fix the conflict for family-2,ambiguous_clarify
+Show all activities in family-2,fast_path_read
+"Noah (family-1) looking for two activity ideas this weekend, preferably swim class or tutoring session, within a 40‑minute drive, please verify the calendar first and leave it unchanged.",outing_workflow
+Create Ben's birthday party on Sat at 2pm for family-4,fast_path_mutate
+List all family-2 activities next week please,fast_path_read
+"Hey, can you find three activities for Maya (family-2) this Saturday? Maybe piano lesson or art class, but only if they fit the calender — please don’t add anything.",outing_workflow
+"Hey, could you sync next week for family-1? Leo has swim class Tue, art class Thu, orthodontist visit Sat – resolve conflicts and send reminders.",deep_weekly_workflow
+"Find an art class for Sofa this Saturday near family-3, within 40 min drive, and make sure we don’t schedule it in the calendar.",outing_workflow
+Delete Leo's soccer practice today for family-1,fast_path_mutate
+"Add Noah's tutoring session to family-4, but he's actually in family-2",fast_path_reject
+"Find an orthodontist visit for Leo family-2 this weekend, verify my calender, stay within 45‑minute drive, no edits.",outing_workflow
+Cancel Priya's chess club last Tuesday for family-2,fast_path_reject
+Can you delete Noah's swim class on Thursday family-4,ambiguous_clarify
+Show all family-3 activities for next week,fast_path_read
+Add Maya's piano lesson for family-2,ambiguous_clarify
+Show today's activities for Priya in family-1,fast_path_read
+"Hey can u coordinate next week for family-1? Leo has soccer practice and piano lesson, need conflict check.",deep_weekly_workflow
+"Assign parent-2 to pick up Maya and drop off Leo at the same exact time, family-2",fast_path_conflict
+Delete Noah's swim class this Friday for family-4,fast_path_mutate
+"Give me two gymnastics sessions for Kai this weekend near family-4, stay within 30 min drive, and no calendar changes.",outing_workflow
+"Need a full week's plan for family-1 - check school calendar, resolve any clashes, and propose options.",deep_weekly_workflow
+Please add Ruby's playdate on Feb 14 2023 2-3 PM for family-2,fast_path_reject
+Add Sofia's art class on Jan 1 2021 for family-1,fast_path_reject
+"Please schedule Zoe's orthodontist visit during her existing swim class, family-3",fast_path_conflict

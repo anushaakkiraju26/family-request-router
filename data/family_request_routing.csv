@@ -403,3 +403,47 @@ Move Priya's tutoring session to Friday at 5 PM for family-3,fast_path_mutate,sy
 "Move Leo's art class to overlap with his soccer practice on Tuesday, family-4",fast_path_conflict,synthetic_manual
 "Please add Noah's orthodontist visit at the same time as his swim class, family-2",fast_path_conflict,synthetic_manual
 "Assign Maya's chess club and dentist appointment to the same hour, family-3",fast_path_conflict,synthetic_manual
+Cancel Leo's soccer practice from last Tuesday for family-1,fast_path_reject,synthetic_manual_minpair
+Cancel Leo's soccer practice next Tuesday for family-1,fast_path_mutate,synthetic_manual_minpair
+Add Maya's piano lesson on March 3rd 2022 at 5 PM for family-2,fast_path_reject,synthetic_manual_minpair
+Add Maya's piano lesson for family-2,ambiguous_clarify,synthetic_manual_minpair
+Add Maya's piano lesson next Thursday at 5 PM for family-2,fast_path_mutate,synthetic_manual_minpair
+"Move Ava's dentist appointment to Thursday for family-2, though she's registered in family-3",fast_path_reject,synthetic_manual_minpair
+Move Ava's dentist appointment to Thursday,ambiguous_clarify,synthetic_manual_minpair
+Move Ava's dentist appointment to Thursday for family-3,fast_path_mutate,synthetic_manual_minpair
+Delete Noah's swim class from yesterday for family-4,fast_path_reject,synthetic_manual_minpair
+Delete Noah's swim class for family-4,ambiguous_clarify,synthetic_manual_minpair
+Delete Noah's swim class this Friday for family-4,fast_path_mutate,synthetic_manual_minpair
+Reschedule Priya's tutoring session to last Monday for family-1,fast_path_reject,synthetic_manual_minpair
+Reschedule Priya's tutoring session for family-1,ambiguous_clarify,synthetic_manual_minpair
+Reschedule Priya's tutoring session to next Monday for family-1,fast_path_mutate,synthetic_manual_minpair
+Add Zoe's birthday party on Feb 1 2023 for family-2,fast_path_reject,synthetic_manual_minpair
+Add a birthday party for family-2,ambiguous_clarify,synthetic_manual_minpair
+Add Zoe's birthday party next Saturday for family-2,fast_path_mutate,synthetic_manual_minpair
+Try again to add Ben's chess club at 5 PM for family-3 after it was already rejected,fast_path_reject,synthetic_manual_minpair
+Add Ben's chess club for family-3,ambiguous_clarify,synthetic_manual_minpair
+Add Ben's chess club at 5 PM tomorrow for family-3,fast_path_mutate,synthetic_manual_minpair
+Add Sofia's art class on Jan 1 2021 for family-1,fast_path_reject,synthetic_manual_minpair
+Add an art class for family-1,ambiguous_clarify,synthetic_manual_minpair
+Add Sofia's art class next Wednesday for family-1,fast_path_mutate,synthetic_manual_minpair
+Apply the old weekly plan to schedule Kai's gymnastics for family-4,fast_path_reject,synthetic_manual_minpair
+Schedule Kai's gymnastics for family-4,ambiguous_clarify,synthetic_manual_minpair
+Schedule Kai's gymnastics next Tuesday at 4 PM for family-4,fast_path_mutate,synthetic_manual_minpair
+Cancel Ruby's orthodontist visit from two weeks ago for family-1,fast_path_reject,synthetic_manual_minpair
+Cancel Ruby's orthodontist visit for family-1,ambiguous_clarify,synthetic_manual_minpair
+Cancel Ruby's orthodontist visit next Monday for family-1,fast_path_mutate,synthetic_manual_minpair
+"Assign Leo's school pickup to family-2, though he's registered in family-1",fast_path_reject,synthetic_manual_minpair
+Assign school pickup for Leo,ambiguous_clarify,synthetic_manual_minpair
+Assign Leo's school pickup to family-1 at 3 PM tomorrow,fast_path_mutate,synthetic_manual_minpair
+Move Maya's swim class to yesterday's time slot for family-2,fast_path_reject,synthetic_manual_minpair
+Move Maya's swim class for family-2,ambiguous_clarify,synthetic_manual_minpair
+Move Maya's swim class to 5 PM Thursday for family-2,fast_path_mutate,synthetic_manual_minpair
+Please try scheduling Ava's playdate again for family-3 even though I already said no,fast_path_reject,synthetic_manual_minpair
+Schedule a playdate for family-3,ambiguous_clarify,synthetic_manual_minpair
+Schedule Ava's playdate for Saturday at 2 PM for family-3,fast_path_mutate,synthetic_manual_minpair
+"Add Noah's tutoring session to family-4, but he's actually in family-2",fast_path_reject,synthetic_manual_minpair
+Add a tutoring session for Noah,ambiguous_clarify,synthetic_manual_minpair
+Add Noah's tutoring session for family-2 next Friday at 4 PM,fast_path_mutate,synthetic_manual_minpair
+"Cancel Ben's dentist appointment, it was last week, family-3",fast_path_reject,synthetic_manual_minpair
+"Cancel Ben's dentist appointment, family-3",ambiguous_clarify,synthetic_manual_minpair
+"Cancel Ben's dentist appointment next Tuesday, family-3",fast_path_mutate,synthetic_manual_minpair

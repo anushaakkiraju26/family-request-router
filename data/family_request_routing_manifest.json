@@ -8,18 +8,18 @@
     "ambiguous_clarify": "A request missing information the coordinator needs before acting (which event, which family, which time) and must be answered with a clarifying question rather than a tool call."
   },
   "counts_total": {
-    "fast_path_mutate": 62,
-    "fast_path_reject": 53,
+    "fast_path_mutate": 77,
+    "fast_path_reject": 68,
     "fast_path_read": 54,
     "fast_path_conflict": 51,
-    "ambiguous_clarify": 69,
+    "ambiguous_clarify": 83,
     "deep_weekly_workflow": 61,
     "outing_workflow": 54
   },
-  "train_count": 323,
-  "val_count": 81,
+  "train_count": 358,
+  "val_count": 90,
   "real_seed_count": 30,
-  "synthetic_count": 374,
+  "synthetic_count": 418,
   "generator_model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
   "sources": {
     "seed_examples": "data/seed_examples.json (originally from github.com/anushaakkiraju26/family-calendar: evaluations/cases.json + evaluations/results_baseline.csv, target_workflow_category)"
@@ -33,5 +33,10 @@
     "note": "Split out of fast_path_reject: scheduling conflicts (same child/parent double-booked) are a genuinely different downstream action in the Family Coordinator (offer alternatives / flag possible parent error) than an outright deterministic decline, so they now get their own routing label instead of being folded into fast_path_reject.",
     "rows_relabeled_from_reject": 16,
     "rows_added": 35
+  },
+  "minimal_pair_expansion": {
+    "note": "Pass-4 finding (notebook Recap): ambiguous_clarify had 0% recall under every label structure tried so far, with its confusion target moving from fast_path_reject to fast_path_mutate depending on the taxonomy. Added 15 reject/clarify/mutate minimal-pair triplets (45 rows): each triplet holds the base request constant and varies exactly one fact (a stated disqualifying fact -> reject, that same fact omitted -> clarify, stated and fine -> mutate), to give the model a direct signal for this specific three-way boundary instead of relying on lexical diversity across unrelated examples.",
+    "triplets_added": 15,
+    "rows_added": 44
   }
 }
