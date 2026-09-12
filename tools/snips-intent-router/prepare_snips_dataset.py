@@ -16,21 +16,22 @@ SNIPS NLU benchmark (sonos/nlu-benchmark), already deduplicated into a flat
 balanced across the 7 intents).
 
 This script downloads that data (via the HF `parquet` API, no `datasets`
-library dependency), subsamples it down to a size comparable to the root
-project's data/family_request_routing.csv (so the two recipes are trained on
-similar data volume, not just similar label-set size), and writes it out
-alongside this script in the same file shapes as that dataset:
+library dependency), subsamples it down to a size comparable to
+data/family_request_routing.csv (so the two recipes are trained on similar
+data volume, not just similar label-set size), and writes it out into
+data/snips-intent-router/, alongside the family-request dataset but in its
+own subfolder, in the same file shapes:
 
-  data/snips_intent_routing.csv       (text, category_truth, source) — all rows
-  data/snips_intent_routing_train.csv (80%, stratified)
-  data/snips_intent_routing_val.csv   (20%, stratified)
-  data/snips_intent_routing_manifest.json (counts + provenance)
+  data/snips-intent-router/snips_intent_routing.csv       (text, category_truth, source) — all rows
+  data/snips-intent-router/snips_intent_routing_train.csv (80%, stratified)
+  data/snips-intent-router/snips_intent_routing_val.csv   (20%, stratified)
+  data/snips-intent-router/snips_intent_routing_manifest.json (counts + provenance)
 
 Needs `pyarrow` and `requests` (see requirements.txt).
 
 Run (from the repo root):
 
-  python trials/snips-intent-router/prepare_snips_dataset.py --per-class 65
+  python tools/snips-intent-router/prepare_snips_dataset.py --per-class 65
 """
 
 from __future__ import annotations
@@ -44,9 +45,12 @@ import pandas as pd
 import requests
 from sklearn.model_selection import train_test_split
 
-# Data lives alongside this script (trials/snips-intent-router/data/), not in
-# the repo root's data/ — this trial is kept self-contained in its own folder.
-DATA_DIR = Path(__file__).resolve().parent / "data"
+# This script lives under tools/snips-intent-router/; data goes to the
+# matching data/snips-intent-router/ subfolder, not alongside the script and
+# not mixed into the root data/ — each category (data/notebooks/tools) keeps
+# its own top-level folder, with this trial as a same-named subfolder in each.
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+DATA_DIR = REPO_ROOT / "data" / "snips-intent-router"
 
 HF_DATASET = "benayas/snips"
 HF_PARQUET_API = f"https://huggingface.co/api/datasets/{HF_DATASET}/parquet"

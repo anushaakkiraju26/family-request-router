@@ -51,11 +51,11 @@ python tools/generate_dataset.py --per-class 50
 
 ## Other trial runs
 
-`trials/` holds self-contained, exploratory fine-tuning runs kept separate from the main
-submission above — each in its own folder with its own notebook, data, and prep script, so
-they never mix with the primary dataset/notebook.
+Separate, exploratory fine-tuning runs live alongside the main submission's files, each under
+a same-named subfolder so they never mix with the primary dataset/notebook: `data/<trial>/`,
+`notebooks/<trial>/`, and `tools/<trial>/` (when the trial has a data-prep script).
 
-### `trials/snips-intent-router/` — recipe-generalization test
+### `snips-intent-router` — recipe-generalization test
 
 Checks whether the fine-tuning recipe itself generalizes (rather than being an artifact of
 this one dataset) by running the same Qwen3-1.7B-Base + LoRA / LLaMA Board pipeline on the
@@ -64,13 +64,13 @@ dataset with the same short-utterance, 7-label shape as the family router.
 
 | File | What it is |
 |---|---|
-| `finetune_snips_intent_router.ipynb` | Same recipe as the family-router notebook, applied to this folder's `data/snips_intent_routing.csv`. |
-| `prepare_snips_dataset.py` | Downloads the [`benayas/snips`](https://huggingface.co/datasets/benayas/snips) mirror and subsamples it to roughly match `family_request_routing.csv`'s per-label row count. |
-| `data/snips_intent_routing.csv` / `_train.csv` / `_val.csv` / `_manifest.json` | Same file shapes as the family-request dataset. |
+| `notebooks/snips-intent-router/finetune_snips_intent_router.ipynb` | Same recipe as the family-router notebook, applied to `data/snips-intent-router/snips_intent_routing.csv`. |
+| `tools/snips-intent-router/prepare_snips_dataset.py` | Downloads the [`benayas/snips`](https://huggingface.co/datasets/benayas/snips) mirror and subsamples it to roughly match `family_request_routing.csv`'s per-label row count. |
+| `data/snips-intent-router/snips_intent_routing.csv` / `_train.csv` / `_val.csv` / `_manifest.json` | Same file shapes as the family-request dataset. |
 
 ```
 pip install -r requirements.txt
-python trials/snips-intent-router/prepare_snips_dataset.py --per-class 65
+python tools/snips-intent-router/prepare_snips_dataset.py --per-class 65
 ```
 
 **Result:** fine-tuned accuracy 96.7% vs. a 79.1% baseline (+17.6 pts) — the recipe
