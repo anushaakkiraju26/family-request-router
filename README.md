@@ -25,6 +25,7 @@ project uses to decide how to handle a request:
 | File | What it is |
 |---|---|
 | `notebooks/finetune_family_request_router.ipynb` | The Colab notebook — install, prepare data, train via LLaMA Board, merge, evaluate. Open it directly in Colab. |
+| `notebooks/finetune_family_request_router_executed.ipynb` | The same notebook as actually run, outputs included (loss curve, classification reports, confusion matrix, smoke tests) — evidence of the pass 6/7 results documented in the Recap. |
 | `tools/generate_dataset.py` | Builds the dataset: 30 real requests (`data/seed_examples.json`) expanded with LLM-generated variations to ~50 balanced examples per label. |
 | `data/seed_examples.json` | The 30 real, eval-labelled seed requests this dataset is grounded in — originally from family-calendar's evaluation suite. |
 | `data/family_request_routing.csv` | Full generated dataset (`text`, `category_truth`, `source`). |
