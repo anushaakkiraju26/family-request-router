@@ -49,23 +49,34 @@ python tools/generate_dataset.py --per-class 50
 3. Everything else — LLaMA Board training, adapter merge, baseline comparison, evaluation —
    follows the reference project's flow; see the notebook's own cells for details.
 
-## Recipe-generalization test: SNIPS intent classification
+## Other trial runs
 
-To check whether the fine-tuning recipe itself generalizes (rather than being an artifact of
-this one dataset), the same Qwen3-1.7B-Base + LoRA / LLaMA Board pipeline is also run on the
+`trials/` holds self-contained, exploratory fine-tuning runs kept separate from the main
+submission above — each in its own folder with its own notebook, data, and prep script, so
+they never mix with the primary dataset/notebook.
+
+### `trials/snips-intent-router/` — recipe-generalization test
+
+Checks whether the fine-tuning recipe itself generalizes (rather than being an artifact of
+this one dataset) by running the same Qwen3-1.7B-Base + LoRA / LLaMA Board pipeline on the
 [SNIPS NLU benchmark](https://github.com/sonos/nlu-benchmark) — a 7-intent voice-assistant
 dataset with the same short-utterance, 7-label shape as the family router.
 
 | File | What it is |
 |---|---|
-| `notebooks/finetune_snips_intent_router.ipynb` | Same recipe as the family-router notebook, applied to `data/snips_intent_routing.csv`. |
-| `tools/prepare_snips_dataset.py` | Downloads the [`benayas/snips`](https://huggingface.co/datasets/benayas/snips) mirror and subsamples it to roughly match `family_request_routing.csv`'s per-label row count. |
+| `finetune_snips_intent_router.ipynb` | Same recipe as the family-router notebook, applied to this folder's `data/snips_intent_routing.csv`. |
+| `prepare_snips_dataset.py` | Downloads the [`benayas/snips`](https://huggingface.co/datasets/benayas/snips) mirror and subsamples it to roughly match `family_request_routing.csv`'s per-label row count. |
 | `data/snips_intent_routing.csv` / `_train.csv` / `_val.csv` / `_manifest.json` | Same file shapes as the family-request dataset. |
 
 ```
 pip install -r requirements.txt
-python tools/prepare_snips_dataset.py --per-class 65
+python trials/snips-intent-router/prepare_snips_dataset.py --per-class 65
 ```
+
+**Result:** fine-tuned accuracy 96.7% vs. a 79.1% baseline (+17.6 pts) — the recipe
+generalizes, though SNIPS's baseline is much higher than the family router's (~24–28%) since
+its intents are mostly distinguishable by surface vocabulary alone. See the notebook's own
+Recap section for the full breakdown.
 
 ## Relationship to family-calendar
 
