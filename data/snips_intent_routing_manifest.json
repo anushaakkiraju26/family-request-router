@@ -1,0 +1,30 @@
+{
+  "purpose": "Second dataset to test the family-request-router's fine-tuning recipe (Qwen3-1.7B-Base + LoRA via LLaMA-Factory's LLaMA Board) on an unrelated, well-known intent-classification task with the same 7-label shape, as a generalization sanity check.",
+  "labels": [
+    "AddToPlaylist",
+    "BookRestaurant",
+    "GetWeather",
+    "PlayMusic",
+    "RateBook",
+    "SearchCreativeWork",
+    "SearchScreeningEvent"
+  ],
+  "counts_total": {
+    "RateBook": 65,
+    "AddToPlaylist": 65,
+    "SearchScreeningEvent": 65,
+    "GetWeather": 65,
+    "PlayMusic": 65,
+    "BookRestaurant": 65,
+    "SearchCreativeWork": 65
+  },
+  "train_count": 364,
+  "val_count": 91,
+  "per_class_requested": 65,
+  "source": {
+    "hf_dataset": "benayas/snips",
+    "original_benchmark": "SNIPS NLU benchmark (sonos/nlu-benchmark)",
+    "hf_total_rows_available": 14484,
+    "note": "benayas/snips is a flat text/category mirror of the original SNIPS NLU benchmark's per-intent JSON files. Subsampled here to roughly match data/family_request_routing.csv's per-label row count so the two recipes train on comparable data volume."
+  }
+}

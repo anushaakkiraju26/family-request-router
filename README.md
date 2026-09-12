@@ -49,6 +49,24 @@ python tools/generate_dataset.py --per-class 50
 3. Everything else — LLaMA Board training, adapter merge, baseline comparison, evaluation —
    follows the reference project's flow; see the notebook's own cells for details.
 
+## Recipe-generalization test: SNIPS intent classification
+
+To check whether the fine-tuning recipe itself generalizes (rather than being an artifact of
+this one dataset), the same Qwen3-1.7B-Base + LoRA / LLaMA Board pipeline is also run on the
+[SNIPS NLU benchmark](https://github.com/sonos/nlu-benchmark) — a 7-intent voice-assistant
+dataset with the same short-utterance, 7-label shape as the family router.
+
+| File | What it is |
+|---|---|
+| `notebooks/finetune_snips_intent_router.ipynb` | Same recipe as the family-router notebook, applied to `data/snips_intent_routing.csv`. |
+| `tools/prepare_snips_dataset.py` | Downloads the [`benayas/snips`](https://huggingface.co/datasets/benayas/snips) mirror and subsamples it to roughly match `family_request_routing.csv`'s per-label row count. |
+| `data/snips_intent_routing.csv` / `_train.csv` / `_val.csv` / `_manifest.json` | Same file shapes as the family-request dataset. |
+
+```
+pip install -r requirements.txt
+python tools/prepare_snips_dataset.py --per-class 65
+```
+
 ## Relationship to family-calendar
 
 This repo is intentionally standalone: the seed examples were pulled once from
