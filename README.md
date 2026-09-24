@@ -1,24 +1,56 @@
-# Family Request Router — Week 5 Fine-Tuning Project
+# Family Request Router
 
-Custom-dataset variant of The Gen Academy's [Fine-Tune a Support Ticket Router](https://github.com/The-Gen-Academy/5A-Fine-Tune-a-Support-Ticket-Router)
-Week 5 project. Same recipe — `Qwen/Qwen3-1.7B-Base` + LoRA via LLaMA-Factory's LLaMA Board
+Fine-tunes `Qwen/Qwen3-1.7B-Base` with a LoRA adapter so a small, cheap model can route a
+parent's request to a family-calendar coordinator agent into one of seven handling labels —
+turning a frontier-model reasoning step into a pre-filter that runs locally.
+
+## Result
+
+| Metric | Constrained-choice baseline | Fine-tuned (best pass) |
+|---|---|---|
+| Routing accuracy, 7 labels, held-out split | 28.4% | **55.6%** (+27.2 pts) |
+
+Trained on 448 examples grown from 30 real, eval-labelled requests taken from the
+[family-calendar](https://github.com/anushaakkiraju26/family-calendar) evaluation suite.
+55.6% is pass 4's figure and the best so far; the most recent pass 6 sits at 45.6%, having
+traded overall accuracy for a targeted +24.7 pts on `fast_path_reject`.
+
+Two classes carry the actual finding. `fast_path_conflict` reached **100% recall on its first
+training pass** after being split out of `fast_path_reject`, confirming the split was a real
+and learnable distinction. `ambiguous_clarify` stayed at **0% recall across six passes** and
+three separate interventions — a richer prompt, general contrastive data, and minimal-pair
+contrastive data that varies exactly one fact per triplet. Three failed data/prompt fixes in a
+row point away from "needs more data" and toward LoRA rank 8 lacking the capacity for that
+particular three-way boundary, which makes rank the next single variable worth changing.
+
+Each pass isolates one variable, and the regressions are recorded alongside the wins — see the
+Recap in
+[`notebooks/finetune_family_request_router_executed.ipynb`](notebooks/finetune_family_request_router_executed.ipynb)
+for the pass-by-pass breakdown.
+
+## Approach
+
+Custom-dataset variant of The Gen Academy's [Fine-Tune a Support Ticket Router](https://github.com/The-Gen-Academy/5A-Fine-Tune-a-Support-Ticket-Router).
+Same recipe — `Qwen/Qwen3-1.7B-Base` + LoRA via LLaMA-Factory's LLaMA Board
 UI — applied to my own data instead of IT support tickets.
 
-## What it does
+## The labels
 
-Classifies a parent's request to a family-calendar coordinator agent (e.g. *"Add Leo's soccer
-practice tomorrow from 4 to 5 PM for family-1"*) into one of six routing labels the
-coordinator in my [family-calendar](https://github.com/anushaakkiraju26/family-calendar)
-project uses to decide how to handle a request:
+A request such as *"Add Leo's soccer practice tomorrow from 4 to 5 PM for family-1"* is routed
+to one of the seven labels the coordinator uses to decide how to handle it:
 
 | Label | Downstream action |
 |---|---|
 | `fast_path_mutate` | Direct create/update/move/delete/restore, pending approval |
 | `fast_path_read` | Direct list/show, no mutation |
-| `fast_path_reject` | Must be refused by deterministic safeguards (past event, conflict, cross-family, stale version, unsafe retry) |
+| `fast_path_reject` | Must be refused by a deterministic safeguard: past-dated event, cross-family access, stale plan version, or an unsafe retry after a rejection |
+| `fast_path_conflict` | The same child or parent is double-booked — can be offered alternatives or flagged as a likely error, rather than simply declined |
 | `deep_weekly_workflow` | Full specialist pipeline: intake → planner → transportation → reviewer → reminder |
 | `outing_workflow` | Constrained outing/activity search wrapper, never mutates the calendar |
 | `ambiguous_clarify` | Missing info — must ask before acting |
+
+`fast_path_conflict` was split out of `fast_path_reject` partway through (pass 4) because the
+two need different downstream handling; the label count moved from six to seven at that point.
 
 ## Files
 
@@ -52,7 +84,7 @@ python tools/generate_dataset.py --per-class 50
 
 ## Other trial runs
 
-Separate, exploratory fine-tuning runs live alongside the main submission's files, each under
+Separate, exploratory fine-tuning runs live alongside the main project's files, each under
 a same-named subfolder so they never mix with the primary dataset/notebook: `data/<trial>/`,
 `notebooks/<trial>/`, and `tools/<trial>/` (when the trial has a data-prep script).
 
@@ -86,8 +118,3 @@ This repo is intentionally standalone: the seed examples were pulled once from
 [family-calendar](https://github.com/anushaakkiraju26/family-calendar)'s evaluation suite
 (`evaluations/cases.json` + `evaluations/results_baseline.csv`) and committed here as
 `data/seed_examples.json`, so this project doesn't depend on that repo at runtime.
-
-## Submission
-
-Per the Week 5 handout: using a custom dataset means submitting a GitHub link with all assets
-plus a short Loom video, instead of the Google Doc + screenshot route.
